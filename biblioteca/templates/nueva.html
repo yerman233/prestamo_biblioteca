@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Nueva solicitud</h1>
+<form method="post">
+  <label>Solicitante
+    <select name="solicitante" required>
+      <optgroup label="Estudiantes">
+        {% for e in estudiantes %}
+        <option value="e-{{ e.id_estudiante }}">{{ e.nombre }} — {{ e.curso }}</option>
+        {% endfor %}
+      </optgroup>
+      <optgroup label="Personal">
+        {% for p in personal %}
+        <option value="p-{{ p.id_personal }}">{{ p.nombre }} ({{ p.cargo }})</option>
+        {% endfor %}
+      </optgroup>
+    </select>
+  </label>
+
+  <label>Artículo
+    <select name="id_item" required>
+      {% for i in items %}
+      <option value="{{ i.id_item }}">{{ i.nombre }} ({{ i.tipo }}) — disp: {{ i.stock_disponible }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <label>Cantidad
+    <input type="number" name="cantidad" value="1" min="1" required>
+  </label>
+
+  <button>Registrar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Devoluciones pendientes</h1>
+<table>
+  <div class="tabla-scroll">
+    <table> ... </table>
+  </div>
+  <tr>
+    <th>Solicitante</th>
+    <th>Rol</th>
+    <th>Curso</th>
+    <th>Artículo</th>
+    <th>Cant.</th>
+    <th>Fecha</th>
+    <th></th>
+  </tr>
+  {% for p in pendientes %}
+  <tr>
+    <td>{{ p.solicitante }}</td>
+    <td>{{ p.rol }}</td>
+    <td>{{ p.curso or "—" }}</td>
+    <td>{{ p.item }} ({{ p.tipo }})</td>
+    <td>{{ p.cantidad }}</td>
+    <td>{{ p.fecha_solicitud }}</td>
+    <td>
+      <form method="post" action="{{ url_for('devolver', id_solicitud=p.id_solicitud) }}">
+        <button>Devuelto</button>
+      </form>
+    </td>
+  </tr>
+  {% else %}
+  <tr>
+    <td colspan="7">No hay devoluciones pendientes 🎉</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

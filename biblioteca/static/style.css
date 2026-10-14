@@ -1,0 +1,181 @@
+/* ---------- Variables ---------- */
+:root {
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --borde: #e5e7eb;
+  --acento: #2563eb;
+  --acento-hover: #1d4ed8;
+  --ok: #16a34a;
+  --ok-hover: #15803d;
+  --aviso-bg: #eff6ff;
+  --aviso-borde: #bfdbfe;
+  --radio: 12px;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 1.25rem 3rem;
+  background: var(--bg);
+  color: var(--texto);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Navegación ---------- */
+nav {
+  max-width: 980px;
+  margin: 0 auto 1.5rem;
+  padding: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--texto-suave);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+nav a:hover { background: #e8ecf4; color: var(--texto); }
+nav a.activo { background: var(--acento); color: #fff; }
+
+/* ---------- Contenido (tarjeta) ---------- */
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.75rem;
+}
+
+/* ---------- Avisos ---------- */
+.aviso {
+  max-width: 980px;
+  margin: 0 auto 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--aviso-bg);
+  border: 1px solid var(--aviso-borde);
+  border-radius: 8px;
+  color: #1e40af;
+  font-size: 0.95rem;
+}
+
+/* ---------- Tablas ---------- */
+.tabla-scroll { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th {
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--texto-suave);
+  font-weight: 600;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 2px solid var(--borde);
+}
+
+td {
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--borde);
+  vertical-align: middle;
+}
+
+tbody tr:hover td,
+tr:hover td { background: #f9fafb; }
+
+tr:last-child td { border-bottom: none; }
+
+/* ---------- Formularios ---------- */
+form { margin: 0; }
+
+main > form {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 520px;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--texto);
+}
+
+select,
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+  color: var(--texto);
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ---------- Botones ---------- */
+button {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1.2rem;
+  background: var(--acento);
+  color: #fff;
+  transition: background 0.15s, transform 0.05s;
+}
+
+button:hover { background: var(--acento-hover); }
+button:active { transform: translateY(1px); }
+
+/* Botón "Devuelto" dentro de la tabla: más pequeño y verde */
+td button {
+  background: var(--ok);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+}
+td button:hover { background: var(--ok-hover); }
+
+/* ---------- Móvil ---------- */
+@media (max-width: 640px) {
+  main { padding: 1.1rem; }
+  table { font-size: 0.85rem; }
+  th, td { padding: 0.6rem 0.5rem; }
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}" class="{{ 'activo' if request.endpoint == 'index' }}">Pendientes</a>
+    <a href="{{ url_for('nueva') }}" class="{{ 'activo' if request.endpoint == 'nueva' }}">Nueva solicitud</a>
+    <a href="{{ url_for('inventario') }}" class="{{ 'activo' if request.endpoint == 'inventario' }}">Inventario</a>
+  </nav>
+
+  {% for mensaje in get_flashed_messages() %}
+  <p class="aviso">{{ mensaje }}</p>
+  {% endfor %}
+
+  <main>
+    {% block contenido %}{% endblock %}
+  </main>
+</body>
+
+</html>
